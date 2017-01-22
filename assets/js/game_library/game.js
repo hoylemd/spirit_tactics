@@ -1,4 +1,18 @@
+function _get_log() {
+  var log_element = $('.game_log');
+
+  if (!log_element.length) {
+    console.log('No log element, falling back to console.');
+    log_element = console;
+  }
+
+  return log_element;
+}
+
 function Game(all_states) {
+  // Get the log
+  this.log_element = _get_log();
+
   // Set up graphics
   this.renderer = PIXI.autoDetectRenderer(this.width, this.height);
   this.renderer.backgroundColor = this.BACKGROUND_COLOUR || 0x999999;
@@ -67,15 +81,6 @@ Game.prototype = {
   },
 
   log_element: null,
-  get_log: function Game_get_log() {
-     if (!this.log_element) {
-      this.log_element = $('.game_log');
-      if (!this.log_element.length) {
-        console.log('No log element, falling back to console.');
-        this.log_element = console;
-      }
-    }
-  },
   log: function Game_log(message) {
     if (this.log_element === console) {
       console.log(message);
@@ -103,7 +108,6 @@ Game.prototype = {
     }
     this.stage.removeChild(obj);
   }
-
 };
 
 module.exports = Game;

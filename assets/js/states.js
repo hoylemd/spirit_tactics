@@ -14,7 +14,7 @@ function LoadingAssetsState(game) {
 
   this.update =  function LoadingAssets_update(timedelta) {
     if (!this.loading_started) {
-      console.log('Loading assets...');
+      game.log('Loading assets...');
 
       var that = this;
       var done_loading = function () {
@@ -30,10 +30,10 @@ function LoadingAssetsState(game) {
                  .load(done_loading);
       this.loading_started = true;
     } else if (this.loading_done){
-      console.log('done loading assets!');
+      game.log('done loading assets!');
       this.game.transition('initializing');
     } else {
-      console.log('still loading...');
+      game.log('still loading...');
     }
   };
 }
@@ -49,7 +49,6 @@ function InitializingState(game) {
 
   this.update = function InitializingState_update(timedelta) {
     // start!
-    game.get_log();
     game.log('Welcome to Spirit Tactics');
     game.transition('main');
   };
