@@ -1,5 +1,5 @@
 var Game = require('./game_library/game.js');
-var GridElement= require('./game_library/grid_element.js');
+var GameObject= require('./game_library/game_object.js');
 var game_states = require('./states.js');
 
 function SpiritTacticsGame() {

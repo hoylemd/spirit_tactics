@@ -1,50 +1,41 @@
-/* Class for game GridElements */
+/* Class for game objects */
 
 // Alias
 var TextureCache = PIXI.utils.TextureCache;
 
-var WIDTH = 32;
-var HEIGHT = 32;
+// Object cache
+var object_cache = [];
 
-function GridElement(column, row) {
-  if (!column && column !== 0) {
-    console.error('GridElement instantiated with invalid column: ' + column);
-    column = 0;
-  }
-
-  if (!row && row !== 0) {
-    console.error('GridElement instantiated with invalid row: ' + row);
-    row = 0;
-  }
+function GameObject(name) {
+  this.name = name || "Unnamed GameObject";
 
   // graphics objects
   PIXI.Container.call(this);
 
   this.events = {};
-
   this.event_handlers = {};
 
-  this.type_string = 'GridElement';
+  this.type_string = 'GameObject';
 
-  function GridElement_updatePosition(column, row) {
-    this.column = column;
-    this.x = WIDTH * column;
-    this.row = row;
-    this.y = HEIGHT * row;
+  function GameObject_moveTo(x, y) {
+    y = y || null;
+
+    this.x = x;
+    this.y = y;
   }
-  GridElement_updatePosition.call(this, column, row);
+  GameObject_updatePosition.call(this, column, row);
 
-  this.stringify = function GridElement_stringify() {
+  this.stringify = function GameObject_stringify() {
     return this.type_string + ' at ' + this.positionString();
   };
 
-  this.positionString = function GridElement_positionString() {
+  this.positionString = function GameObject_positionString() {
     return '(' + this.column + ', ' + this.row + ')';
   };
 
-  this.updatePosition = GridElement_updatePosition;
+  this.updatePosition = GameObject_updatePosition;
   // engine methods
-  this.update = function GridElement_update(timedelta) {
+  this.update = function GameObject_update(timedelta) {
 
     // update children
     var events = null;
@@ -76,9 +67,8 @@ function GridElement(column, row) {
   // Input handlers
   this.interactive = false;
 }
-GridElement.prototype = Object.create(PIXI.Container.prototype);
+GameObject.prototype = Object.create(PIXI.Container.prototype);
 
-GridElement.WIDTH = WIDTH;
-GridElement.HEIGHT = HEIGHT;
+GameObject.__cache__ = object_cache;
 
-module.exports = GridElement;
+module.exports = GameObject;
