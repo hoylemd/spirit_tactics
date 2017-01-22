@@ -44,7 +44,7 @@ gulp.task('compile_js', function compile_js() {
 });
 
 gulp.task('watch_js', function() {
-  gulp.watch(js_source_path + '*.js', ['compile_js']);
+  gulp.watch(js_source_path + '**/*.js', ['compile_js']);
 });
 
 gulp.task('dist_js', function dist_js() {
@@ -76,7 +76,7 @@ gulp.task('watch_css', function() {
 });
 
 gulp.task('dist_css', function dist_css() {
-  return gulp.src(css_source_path + '*.css')
+  return gulp.src(css_source_path + '**/*.css')
     .pipe(gulp.dest(css_dist_path));
 });
 
