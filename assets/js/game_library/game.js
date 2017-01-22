@@ -89,9 +89,16 @@ Game.prototype = {
       this.log_element.append(entry);
     }
   },
+  clear_log: function Game_clear_log() {
+    if (this.log_element === console) {
+      console.log('clearing log.' + ('\n' * 20));
+    } else {
+      this.log_element.empty();
+    }
+  },
 
   reset: function Game_reset() {
-    this.log_element.empty();
+    this.clear_log();
 
     this.game_objects = [];
   },
