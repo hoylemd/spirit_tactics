@@ -1,0 +1,16 @@
+body {
+  background-color: #222222;
+  color: #CCFFCC;
+}
+
+.game_area {
+  overflow: auto;
+}
+
+.game_canvasi {
+  float: left;
+}
+
+.game_log {
+  max-width: 40em;
+}

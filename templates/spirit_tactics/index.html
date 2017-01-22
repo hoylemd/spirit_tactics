@@ -1,0 +1,22 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Spirit Tactics</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/spirit_tactics.css' %}"/>
+    {% if debug %}
+      <script src="{% static 'js/lib/jquery.js' %}"></script>
+      <script src="{% static 'js/lib/pixi.js' %}"></script>
+    {% else %}
+      <script src="http://code.jquery.com/jquery-3.1.1.min.js"
+              integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+              crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.3/pixi.min.js"></script>
+    {% endif %}
+</head>
+<body>
+  <div class="game_area">
+    <div class='game_canvas'></div>
+  </div>
+  <script src="{% static 'js/spirit_tactics_bundle.js' %}"></script>
+</body>
