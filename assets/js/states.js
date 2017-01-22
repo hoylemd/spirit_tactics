@@ -25,9 +25,14 @@ function LoadingAssetsState(game) {
       var textures = [];
       var texture_atlases = [];
 
-      PIXI.loader.add(textures)
-                 .add(texture_atlases)
-                 .load(done_loading);
+      if (textures.length && texture_atlases.length) {
+        PIXI.loader.add(textures)
+                   .add(texture_atlases)
+                   .load(done_loading);
+      } else {
+        done_loading();
+      }
+
       this.loading_started = true;
     } else if (this.loading_done){
       game.log('done loading assets!');
