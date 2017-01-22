@@ -49,6 +49,7 @@ function InitializingState(game) {
 
   this.update = function InitializingState_update(timedelta) {
     // start!
+    game.get_log();
     game.log('Welcome to Spirit Tactics');
     game.transition('main');
   };
@@ -70,8 +71,9 @@ function MainState(game) {
   };
 
   this.update = function MainState_update(timedelta) {
-    game.log('main loop');
   };
+
+  game.log('entering main loop');
 }
 MainState.prototype = Object.create(GameState.prototype);
 all_states.main = MainState;

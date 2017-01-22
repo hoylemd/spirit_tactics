@@ -67,13 +67,22 @@ Game.prototype = {
   },
 
   log_element: null,
-  log: function Game_log(message) {
-    if (!this.log_element) {
+  get_log: function Game_get_log() {
+     if (!this.log_element) {
       this.log_element = $('.game_log');
+      if (!this.log_element.length) {
+        console.log('No log element, falling back to console.');
+        this.log_element = console;
+      }
     }
-
-    var entry = $('<div class="log_entry">' + message + '</div>');
-    this.log_element.append(entry);
+  },
+  log: function Game_log(message) {
+    if (this.log_element === console) {
+      console.log(message);
+    } else {
+      var entry = $('<div class="log_entry">' + message + '</div>');
+      this.log_element.append(entry);
+    }
   },
 
   reset: function Game_reset() {
