@@ -64,6 +64,10 @@ function GameObject(name) {
     return events_to_bubble;
   };
 
+  this.delete = function GameObject_delete() {
+    this.parent.remove_object(this);
+  };
+
   // Input handlers
   this.interactive = false;
 }

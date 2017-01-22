@@ -106,6 +106,7 @@ Game.prototype = {
   add_object: function Game_add_object(obj) {
     this.stage.addChild(obj);
     this.game_objects.push(obj);
+    obj.parent = this;
   },
 
   remove_object: function Game_remove_object(obj) {
@@ -114,6 +115,7 @@ Game.prototype = {
       this.game_objects.splice(index);
     }
     this.stage.removeChild(obj);
+    obj.parent = null;
   }
 };
 
