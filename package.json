@@ -4,7 +4,7 @@
   "description": "Sprits & Tactics by mike",
   "main": "main.js",
   "scripts": {
-    "test": "browserify-test ./assets/js/tests/index.js"
+    "test": "browserify-test ./assets/js/game_library/tests/index.js"
   },
   "repository": {
     "type": "git",
